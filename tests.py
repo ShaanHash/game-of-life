@@ -1,5 +1,6 @@
 from renderenginer import render
 from transformationengine import next_state
+from boardstate import random_state
 import numpy as np
 
 """
@@ -43,12 +44,12 @@ def test_2():
     intial_state = np.array([
         [1,0,0],
         [1,1,0],
-        [0,0,0]
+        [0,0,0],
         ],object)
     expected_state = np.array([
-        [1,1,0],
-        [1,1,0],
-        [0,0,0]
+        [1,1,1],
+        [1,1,1],
+        [1,1,1],
         ],object)
 
     new_state = next_state(intial_state)
@@ -64,9 +65,30 @@ def test_2():
         print("Expected State")
         render(expected_state)  
 
+def test_3():
+
+    intial_state = random_state(10,10,75)
+    expected_state = np.array([
+        [1,1,1],
+        [1,1,1],
+        [1,1,1],
+        ],object)
+
+    new_state = next_state(intial_state)
+
+    if (np.array_equal(new_state, expected_state)):
+        print("Test 3 Passed")
+    else:
+        print("Test 3 Failed")
+        print("Initial State:")
+        render(intial_state)
+        print("Next State:")
+        render(new_state)
+        print("Expected State")
+        render(expected_state) 
 
 
-# Empty board should be empty
+
 test_1()
-# Exactlly 3 nieghbours should spawn a new 
 test_2()
+

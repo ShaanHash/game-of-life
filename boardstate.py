@@ -33,6 +33,7 @@ def random_state(height: int, width: int, threshold: int):
 
     for i in range(len(intial_board)):
         for j in range(len(intial_board[i])):
+            
             random_number = random.randint(0,100)
 
             if random_number <= threshold:
